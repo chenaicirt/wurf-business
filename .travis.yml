@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- '8'
+cache:
+  directories:
+    - node_modules
+script:
+- rm -rf node_modules
+- rm package-lock.json
+- npm install
+- npm test
+deploy:
+  provider: heroku
+  skip_cleanup: true
+  api_key:
+    secure: YhtbyX0u4PGdPkH3KwNeLlNWbDvHizw83yxbayt0P+59NyIVL5Ow/hWO55muBjqaQLmSzrTizkzo88NcF+Q4zbNHnlgNqmPX2qgmF8cAh94HXlbNx/0XUeoc1ttmjQLpGRKignxjk0x3VGQhK2NdcBR8CLHP3Telyj2R5/jAbDt7eUwM/QhEHPAG1ULj18KujYlErxek4FMaKlH8HjtBHnHnq2L9Myh5taWPDUar0Yp3w+twBqTzstMXpJG02q8NADWy7U85IIqAax88EEdhQDTwy0lfHbvIRpoj1C1irOcFBmxWqHZRMeZhgebITAFi/xuNJZztbUGzGOMRpTpwKKUIOwOKN1FPYQKil5vWDs5wEMCm3j55yz3lPxqZ+U1TGXbcqJ3CPw5lQhkSJhO4WOG/lCQ1byUYqeDOQfP9jCO83rosejGPAAnd71Xy0ZsQnlWQgzLCo4JxUnZAjLFAVS3wOwwpvTMBKVJ74lur8XsiyNb77DTlR3DdpF2pKO/gXN5RPgRaDWOvHW4XW0uLHWDuklyCosDnZD7Vz81hnZZ61cTJJMVQNk+OD/gzoAUV7lfHPPRaoo3fUOgdSOJGjI0lOnqqoXlnwQLODxjx6QcleK+frASKMiYcu1X1QN2//lmnSoB2bnhx1IVBO1bsnViqfAHWkkJuEAVI6lCpHCk=
+  on: master
