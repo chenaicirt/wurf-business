@@ -3,14 +3,15 @@ node_js:
 - '8'
 cache:
   directories:
-    - node_modules
+  - node_modules
 script:
-- yarn install
-- yarn test
-- yarn run build
+- npm install
+- npm test
+- npm run build
 deploy:
   provider: heroku
-  skip_cleanup: true
   api_key:
-    secure: YhtbyX0u4PGdPkH3KwNeLlNWbDvHizw83yxbayt0P+59NyIVL5Ow/hWO55muBjqaQLmSzrTizkzo88NcF+Q4zbNHnlgNqmPX2qgmF8cAh94HXlbNx/0XUeoc1ttmjQLpGRKignxjk0x3VGQhK2NdcBR8CLHP3Telyj2R5/jAbDt7eUwM/QhEHPAG1ULj18KujYlErxek4FMaKlH8HjtBHnHnq2L9Myh5taWPDUar0Yp3w+twBqTzstMXpJG02q8NADWy7U85IIqAax88EEdhQDTwy0lfHbvIRpoj1C1irOcFBmxWqHZRMeZhgebITAFi/xuNJZztbUGzGOMRpTpwKKUIOwOKN1FPYQKil5vWDs5wEMCm3j55yz3lPxqZ+U1TGXbcqJ3CPw5lQhkSJhO4WOG/lCQ1byUYqeDOQfP9jCO83rosejGPAAnd71Xy0ZsQnlWQgzLCo4JxUnZAjLFAVS3wOwwpvTMBKVJ74lur8XsiyNb77DTlR3DdpF2pKO/gXN5RPgRaDWOvHW4XW0uLHWDuklyCosDnZD7Vz81hnZZ61cTJJMVQNk+OD/gzoAUV7lfHPPRaoo3fUOgdSOJGjI0lOnqqoXlnwQLODxjx6QcleK+frASKMiYcu1X1QN2//lmnSoB2bnhx1IVBO1bsnViqfAHWkkJuEAVI6lCpHCk=
-  on: master
+    secure: T1qzP66yzXw0XnCTDdVfAgTu02wy8/mzxgOK0CPjV80f78RWjxjfUshmv5lN4Z74R0sg1iQSQH/7JGyeLto8Zj47sHBMII1JlyG/jlamAJVlUe0jSbWH5n4im3jtLRT5edSP9crURUxf2lww5CT9t2aZM7En951uXf1DTv4tZm79VJemT20fl+VMEzPcMYMltSpy9gOLN83je+sDvTkVx0/C1VYI9209bFHfvXjdIODMsCCSJY+b4G/KwtcHxbpBeYw95b5kf1RjhXndGIZuDo0nQpTnplC6PJpERpSHtClkYgcROwvVHLza8CldoVqzqVTOts+qC+NYSVnVLhLyWeJzBHiWkQ5SrUKwNhcZev2YolA+bdjSYDNV3rXFkHt43cxHDHgjxKKz45VZMOK8xr+aJ7rUeGWojMsMziGQ9pCvGpfUgTU3RVbEqaBega6HfCguVIZJRCg/kIwiZHTxLTjQ9O6RAziJ8rIak/X+dBHuPz/XSZY+M6tR9tLiUKIp3ojsTfai99rej7q1BC6VWg9l3uOxsjUmdznRqX+d2UM+H/mSWe1JbL9I8nuEP9NR0B5KEVlZjw3ofQIfgL0TLst2NuSt0btt5KS++AZfQWczdOcrWE3HF5gsblbXFcEy56nqvofs2TUclRBaqrHvO7wmHLyBT1o+9PCKl0rSqGU=
+  app: wurf-business
+  on:
+    repo: chenaicirt/wurf-business
