@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {DropdownButton, Dropdown} from 'react-bootstrap';
 import topprod from '../../img/topproducts.png'
 import prods from '../../img/yourproducts.png'
 import trends from '../../img/trends.png'
@@ -23,9 +22,9 @@ class Graph extends Component {
   }
 
   handleChange = (e) => {
-    var value = this.state.optionsdata.filter(function(item) {
-      return item.key == e.target.value
-    }) 
+    // var value = this.state.optionsdata.filter(function(item) {
+    //   return item.key == e.target.value
+    // }) 
 
     this.setState({currentimage: this.state.randomImages[e.target.value]}, function () {
       console.log(this.state.currentimage);
@@ -47,7 +46,7 @@ class Graph extends Component {
       <br />
       <br />
 
-        <img src={this.state.currentimage} height = "300"/>
+        <img src={this.state.currentimage} alt = "hi" height = "300"/>
 			</div>
 		</center>
 
