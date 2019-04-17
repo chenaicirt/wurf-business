@@ -1,14 +1,86 @@
 body {
   margin: 0;
   padding: 0;
+  color: black;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.main-hero{
+  background-image: url('/img/dronuts-hero.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 700px;
+
+}
+.hero-text{
+  padding:15px;
+  background-color: rgba(0,0,0,.5);
+  color: white;
+  width: 40%;
+  margin: auto;
+}
+
+
+.plscroll {
+  overflow-y: scroll; 
+}
+
+.logo{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #114711;
+   color: white;
+   text-align: center;
+}
+
+.navbar {
+	   background-color: #114711 !important;
+	   width: 100% !important;
+}
+
+.navbarx {
+  color: white !important;
+}
+
+.navbarx:hover {
+  background: #0c380c;
+  border-radius: 4px;
+}
+
+.navbarxr {
+  color: white !important;
+  text-align: right;
+}
+
+
+
+.nav-link {
+	color: black;
+}
+
+.content {
+  margin-bottom: 5em;
+}
+
+.logincontainer{
+  width: 50%;
 }
