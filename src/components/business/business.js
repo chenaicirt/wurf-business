@@ -3,7 +3,7 @@ import {Jumbotron, Button} from 'react-bootstrap';
 import fire from '../../fire.js';
 import {Table} from 'react-bootstrap';
 import {
-  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,ResponsiveContainer
+  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,ResponsiveContainer, LineChart, Line
 } from 'recharts'
 
 
@@ -15,6 +15,7 @@ class Business extends Component {
         topproducts: [],
         worstproducts: [],
         prods: [],
+        lolprods: [],
         num_wins: 0,
         total_elo: 0,
         avg_elo: 0,
@@ -32,6 +33,7 @@ class Business extends Component {
 
             this.setState({
               prods: this.state.prods.concat ([{name: docSnapshot.data().name, elo_rating: docSnapshot.data().elo_rating}]),
+              lolprods: this.state.lolprods.concat ([{name: docSnapshot.data().name, losses: docSnapshot.data().num_losses, num_wins: docSnapshot.data().num_wins }]),
               num_wins: this.state.num_wins + docSnapshot.data().num_wins,
               total_prods: this.state.total_prods + 1,
               total_elo: this.state.total_elo + docSnapshot.data().elo_rating
@@ -45,6 +47,8 @@ class Business extends Component {
               worstproducts: x.reverse().slice(0,3),
 
             });
+
+            console.log(this.state.lolprods);
 
 
 
@@ -101,6 +105,26 @@ class Business extends Component {
    </Table>
    </div>
 
+   <h2>All Products</h2>
+   <ResponsiveContainer  width="95%" height={400}>
+   <LineChart
+      width={500}
+      height={300}
+      data={this.state.lolprods}
+      margin={{
+        top: 5, right: 30, left: 20, bottom: 5,
+      }}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="name" />
+      <YAxis />
+      <Tooltip />
+      <Legend />
+      <Line type="monotone" dataKey="losses" stroke="#8884d8" activeDot={{ r: 8 }} />
+      <Line type="monotone" dataKey="num_wins" stroke="#82ca9d" />
+    </LineChart>
+
+       </ResponsiveContainer>
 
 
         <h2>Underperforming Products</h2>
