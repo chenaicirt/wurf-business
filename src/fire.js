@@ -9,30 +9,9 @@ var config = {
   storageBucket: "wurf-82264.appspot.com",
   messagingSenderId: "573969861553"
 };
-firebase.initializeApp(config);
-var db = firebase.firestore();
 
-
-const menu = require("./nyxmascara.json");
-
-menu.forEach(function(obj) {
-    db.collection("Mascara").add({
-        id: obj.id,
-        brand: obj.brand,
-        name: obj.name,
-        description: obj.description,
-        price: obj.price,
-        image_link: obj.image_link,
-        product_type: "mascara",
-        num_of_comparisons: 0,
-        num_passees: 0,
-        num_wins: 0,
-        num_losses: 0,
-        elo_rating: 1500
-    }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function(error) {
-        console.error("Error adding document: ", error);
-    });
-});
+const fire = firebase.initializeApp(config);
+export const auth = firebase.auth();
+export const provider = new firebase.auth.GoogleAuthProvider();
+provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+export default fire;

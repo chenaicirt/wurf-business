@@ -30,7 +30,7 @@ class Login extends Component {
 				    <Form.Check type="checkbox" label="Check me out" />
 				  </Form.Group>
 				  <center>
-				  <Button variant="primary" type="submit">
+				  <Button variant="primary" type="submit"  onClick={() => this.props.history.push('/business')}>
 				    Submit
 				  </Button>
 				  </center>
@@ -42,6 +42,3 @@ class Login extends Component {
 }
 
 export default Login;
-    
-
-

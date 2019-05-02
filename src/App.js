@@ -8,20 +8,21 @@ import Pricing from "./components/pricing.js"
 import Features from "./components/features.js"
 import Home from "./components/home.js"
 import Graph from "./components/graphs/graphs.js"
+import Business from "./components/business/business.js"
 
 import wurflogo from './img/wurf-logo.png'
 
 class App extends Component {
   render() {
     return (
-      <Router> 
+      <Router>
 
           <div>
           <center>
            <Link to={'/home'}>
             <img src={wurflogo} alt="Wurf" height="80" />
-            </Link> 
-          </center>     
+            </Link>
+          </center>
 
 
            <Navbar />
@@ -33,6 +34,7 @@ class App extends Component {
               <Route path="/pricing" component={Pricing}/>
               <Route path="/features" component={Features}/>
               <Route path="/data" component={Graph}/>
+              <Route path="/business" component={Business}/>
 
               <Route path="/" component={Home}/>
           </Switch>
@@ -44,7 +46,7 @@ class App extends Component {
 
         </div>
 
-        </Router> 
+        </Router>
 
 
 
