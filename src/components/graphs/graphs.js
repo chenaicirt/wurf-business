@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import fire from '../../fire.js';
 
 import {
-  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,ResponsiveContainer
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,ResponsiveContainer
 } from 'recharts'
 
 
@@ -39,9 +39,10 @@ class Graph extends Component {
     let db = fire.firestore();
     db.collection('Beauty Products').get().then(snapshot => {
       snapshot.forEach(docSnapshot => {
+     
         var toAdd = {name: docSnapshot.data().name, elo_rating:docSnapshot.data().elo_rating};
 
-        if (this.state.avg_elo.length == 0 ) {
+        if (this.state.avg_elo.length === 0 ) {
           this.setState({
             avg_elo: this.state.avg_elo.concat([{name: docSnapshot.data().brand, elo_rating: toAdd.elo_rating, count: 0}]),
             num_wins: this.state.num_wins.concat([{name: docSnapshot.data().brand, num_wins:docSnapshot.data().num_wins }])
@@ -51,17 +52,30 @@ class Graph extends Component {
         var xd = -1;
 
           for (var i = 0; i < this.state.avg_elo.length; i++) {
-            if (this.state.avg_elo[i].name.length == docSnapshot.data().brand.length) {
-              xd = i;
-              break;
+            console.log("sflksjdlfjsldfjsldfjs");
+
+            // console.log();
+            if (this.state.avg_elo[i].name !== undefined ) {
+                          console.log(this.state.avg_elo[i]);
+                          console.log(docSnapshot.data());
+
+                      if (this.state.avg_elo[i].name.length === docSnapshot.data().brand.length) {
+                          xd = i;
+                          break;
+                        }
+                        else {
+                          xd= -1;
+                        }
             }
-            else {
-              xd= -1;
-            }
+   
+
+
           }
 
+            
 
-        if (xd != -1)  {
+
+        if (xd !== -1)  {
           this.state.avg_elo[xd].elo_rating += toAdd.elo_rating;
           this.state.avg_elo[xd].count ++;
           this.state.num_wins[xd].num_wins += docSnapshot.data().num_wins;

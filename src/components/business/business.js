@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import {Jumbotron, Button} from 'react-bootstrap';
 import fire from '../../fire.js';
 import {Table} from 'react-bootstrap';
 import {
-  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,ResponsiveContainer, LineChart, Line
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,ResponsiveContainer, LineChart, Line
 } from 'recharts'
 
 
@@ -20,15 +19,40 @@ class Business extends Component {
         total_elo: 0,
         avg_elo: 0,
         total_prods: 0,
+        data : [
+  {
+    name: 'T1', elo_rating: 1400,
+  },
+  {
+    name: 'T2', elo_rating: 1800,
+  },
+  {
+    name: 'T3', elo_rating: 2300,
+  },
+  {
+    name: 'T4', elo_rating: 2000,
+  },
+  {
+    name: 'T5', elo_rating: 2181,
+  },
+  {
+    name: 'T6', elo_rating: 2500,
+  },
+  {
+    name: 'T7', elo_rating: 1800,
+  },
+]
+
 
       }
     }
+
 
     componentDidMount() {
       let db = fire.firestore();
       db.collection('Beauty Products').get().then(snapshot => {
         snapshot.forEach(docSnapshot => {
-          if (docSnapshot.data().brand == "dior") {
+          if (docSnapshot.data().brand === "dior") {
 
 
             this.setState({
@@ -104,6 +128,27 @@ class Business extends Component {
      </tbody>
    </Table>
    </div>
+
+   <h2>Average Elo_rating Over Time </h2>
+   <ResponsiveContainer  width="95%" height={400}>
+   <LineChart
+      width={500}
+      height={300}
+      data={this.state.data}
+      margin={{
+        top: 5, right: 30, left: 20, bottom: 5,
+      }}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="name" />
+      <YAxis />
+      <Tooltip />
+      <Legend />
+      <Line type="monotone" dataKey="elo_rating" stroke="#8884d8" activeDot={{ r: 8 }} />
+    </LineChart>
+
+       </ResponsiveContainer>
+
 
    <h2>All Products</h2>
    <ResponsiveContainer  width="95%" height={400}>
